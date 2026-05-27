@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Selvaganapathi S · Portfolio</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-shine: rgba(255, 255, 255, 0.15);
+      --text-main: #f5f5f7;
+      --text-sub: #86868b;
+      --accent-blue: #548cff;
+      --apple-ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-main);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Liquid Orbs */
+    .ambient-blur {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
+      mix-blend-mode: screen;
+      opacity: 0.35;
+      animation: float 20s infinite alternate var(--apple-ease);
+    }
+
+    .orb-1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(84,140,255,0.6) 0%, transparent 80%);
+      top: -10%;
+      left: 15%;
+    }
+
+    .orb-2 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(236,72,153,0.3) 0%, transparent 80%);
+      bottom: -15%;
+      right: 10%;
+      animation-delay: -5s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(80px, 40px) scale(1.15); }
+    }
+
+    /* The Master Glass Vessel */
+    .glass-master {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1200px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+      backdrop-filter: blur(40px) saturate(220%);
+      -webkit-backdrop-filter: blur(40px) saturate(220%);
+      border-radius: 2.5rem;
+      border: 1px solid var(--glass-border);
+      padding: 3.5rem;
+      box-shadow: 
+        0 40px 100px rgba(0, 0, 0, 0.6),
+        inset 0 1px 1px rgba(255,255,255,0.2),
+        inset 0 20px 40px rgba(255,255,255,0.02);
+      transition: transform 0.5s var(--apple-ease), box-shadow 0.5s var(--apple-ease);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    /* Dynamic Glass Specular Light Overlay */
+    .glass-master::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 2.5rem;
+      background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.08), transparent 40%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Navigation Bar */
+    .nav-glass {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #ffffff, #a3b8cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.4rem;
+      border-radius: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-links a {
+      color: var(--text-sub);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.6rem 1.4rem;
+      border-radius: 1.5rem;
+      transition: all 0.3s var(--apple-ease);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    /* Hero Layout */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      align-items: center;
+      gap: 4rem;
+      margin-bottom: 5rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .greeting {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-blue);
+      margin-bottom: 1rem;
+    }
+
+    .name {
+      font-size: 4.5rem;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      background: linear-gradient(to bottom, #ffffff 40%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+    }
+
+    .title-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 2rem;
+      padding: 0.5rem 1.5rem;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #e2e8f0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .bio {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--text-sub);
+      max-width: 580px;
+      margin: 2rem 0 2.5rem;
+    }
+
+    /* Action Buttons */
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.9rem 2.2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.4s var(--apple-ease);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .btn-primary:hover {
+      background: #f5f5f7;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(255,255,255,0.1);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Glass Liquid Avatar Container */
+    .hero-image {
+      display: flex;
+      justify-content: center;
+    }
+
+    .avatar-lens {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 80%);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 
+        0 30px 60px rgba(0,0,0,0.4),
+        inset 0 10px 30px rgba(255,255,255,0.15),
+        inset -10px -10px 30px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden; /* Clips your image cleanly into the circle */
+    }
+
+    .avatar-lens img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.95;
+      transition: transform 0.5s var(--apple-ease);
+    }
+
+    .avatar-lens:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    /* Grid & Project Glass Cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 5rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.8rem;
+      padding: 2.2rem 2rem;
+      transition: all 0.5s var(--apple-ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.5s var(--apple-ease);
+    }
+
+    .project-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 
+        0 20px 40px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-icon {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent-blue);
+      display: inline-block;
+    }
+
+    .project-card h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.3px;
+    }
+
+    .project-card p {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Education Segment */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .edu-row:last-child {
+      border-bottom: none;
+    }
+    .edu-inst {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .edu-deg {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+    .edu-grade {
+      background: rgba(84, 140, 255, 0.1);
+      color: var(--accent-blue);
+      padding: 0.3rem 0.8rem;
+      border-radius: 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Dynamic Pills Capsule */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 5rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .skill-tag {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 2rem;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #e2e8f0;
+      transition: all 0.3s var(--apple-ease);
+    }
+
+    .skill-tag:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255,255,255,0.3);
+      color: #fff;
+    }
+
+    /* Footer Layout */
+    .footer-glass {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--text-sub);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      color: var(--text-sub);
+      font-size: 1.2rem;
+      transition: color 0.3s var(--apple-ease);
+    }
+
+    .social-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* Ultra Responsive Adaptations */
+    @media (max-width: 968px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+      }
+      .hero-image {
+        order: -1;
+      }
+      .bio {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .cta-group {
+        justify-content: center;
+      }
+      .name {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media (max-width: 580px) {
+      body {
+        padding: 1rem 0.75rem;
+      }
+      .glass-master {
+        padding: 2rem 1.5rem;
+        border-radius: 1.75rem;
+      }
+      .nav-glass {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+      .name {
+        font-size: 2.75rem;
+      }
+      .edu-row {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Light Layers -->
+  <div class="ambient-blur">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <!-- Main Glass Container Layer -->
+  <div class="glass-master">
+    
+    <!-- Header Controls -->
+    <nav class="nav-glass">
+      <div class="logo">✦ selva.</div>
+      <div class="nav-links">
+        <a href="mailto:selvasubramanian293@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="https://github.com/selvaganapathi01" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/selvaganapathi01" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+      </div>
+    </nav>
+
+    <!-- Interactive Workspace Presentation Grid -->
+    <div class="hero-section">
+      <div class="hero-text">
+        <div class="greeting">✦ Computer Science Professional</div>
+        <h1 class="name">Selvaganapathi S</h1>
+        <div class="title-badge">
+          <i class="fa-solid fa-code"></i> MCA Graduate & Aspiring Developer
+        </div>
+        <p class="bio">
+          Good understanding of computer science fundamentals with hands-on experience in academic projects. Interested in
+both software development and HR roles, with strong problem-solving, communication, and learning skills.
+
+        </p>
+        <div class="cta-group">
+          <a href="mailto:selvasubramanian293@gmail.com" class="btn btn-primary">Let's Connect <i class="fas fa-envelope" style="font-size: 0.8rem;"></i></a>
+          <a href="resume.pdf" target="_blank" download class="btn btn-secondary"><i class="fas fa-download"></i> Download Resume</a>
+        </div>
+      </div>
+      
+      <div class="hero-image">
+        <div class="avatar-lens">
+          <!-- Profile image replacing placeholder astronaut icon -->
+          <img src="https://media.licdn.com/dms/image/v2/D5603AQFrquKsyjxRHg/profile-displayphoto-scale_400_400/B56ZiUSy7QHQAg-/0/1754834614280?e=1781740800&v=beta&t=5U6G4fxwF_SNgOaOj0GCio0IJWul4_LAckOz_rOBlOs" alt="Selvaganapathi S">
+        </div>
+      </div>
+    </div>
+
+    <!-- Academic History Matrix -->
+    <div style="margin-bottom: 5rem;">
+      <h2 class="section-title">
+        <i class="fa-solid fa-graduation-cap"></i> Educational Matrix
+      </h2>
+      <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.05); border-radius: 1.5rem; padding: 1.5rem 2rem;">
+        <div class="edu-row">
+          <div>
+            <div class="edu-inst">Rajiv Gandhi College of Engineering and Technology(2025-2026)</div>
+            <div class="edu-deg">Master of Computer Applications (M.C.A) · Puducherry</div>
+          </div>
+          <div class="edu-grade">current sem*CGPA: 8.71</div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Applied Deployment Architecture Grid -->
+    <div>
+      <h2 class="section-title">
+        <i class="fa-regular fa-folder-open"></i> Applied Development Systems
+      </h2>
+      <div class="projects-grid">
+  <div class="project-card">
+    <div class="project-icon"><i class="fas fa-seedling"></i></div>
+    <h3>Machine Learning Based Decision Support System for Precision Agriculture</h3>
+    <p>Agriculture platform using ML to analyze soil and environmental data (N, P, K, pH) for smart crop recommendations. Includes localized Indian region mapping, real-time AQI updates, admin/user dashboards, government scheme tracking, and interactive learning resources.</p>
+  </div>
+</div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-search-location"></i></div>
+          <h3>Lost & Found Information System</h3>
+          <p>Full-stack web application customized for structural item records management. Programmed role-based entry structures and multi-level data validation protocols via HTML5, CSS3, JavaScript, PHP, and MySQL on XAMPP configurations.</p>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-heartbeat"></i></div>
+          <h3>Blood Donation Registry System</h3>
+          <p>Donor cataloging and operational demand tracking infrastructure. Refactored structural backend validation engines over localized relational models using dynamic SQL environments following precise SDLC engineering rules.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Tool Stack Framework -->
+    <div>
+      <h2 class="section-title">
+        <i class="fa-solid fa-layer-group"></i> Capability Parameters (on progress)
+      </h2>
+      <div class="skills-container">
+        <span class="skill-tag">Python (Core)</span>
+        <span class="skill-tag">JavaScript ES6</span>
+        <span class="skill-tag">HTML5 / CSS3</span>
+        <span class="skill-tag">Responsive Layout Design</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">SDLC Life Cycles</span>
+        <span class="skill-tag">Code Debugging & Testing</span>
+        <span class="skill-tag">Linguistic: English, Tamil, Basic Hindi</span>
+      </div>
+    </div>
+
+    <!-- Master Layout Footer -->
+    <div class="footer-glass">
+      <span>© 2026 Selvaganapathi S.</span>
+      <span class="fas fa-location-dot"> Puducherry, India</span>
+    </div>
+  </div>
+
+  <!-- Interactive Refraction Physics Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const glassFrame = document.querySelector('.glass-master');
+      if (!glassFrame) return;
+
+      window.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        const xPos = (clientX / width) - 0.5;
+        const yPos = (clientY / height) - 0.5;
+
+        const tiltX = (yPos * -10).toFixed(2);
+        const tiltY = (xPos * 10).toFixed(2);
+
+        const frameRect = glassFrame.getBoundingClientRect();
+        const localX = clientX - frameRect.left;
+        const localY = clientY - frameRect.top;
+
+        glassFrame.style.transform = `perspective(2000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-2px)`;
+        glassFrame.style.setProperty('--mouse-x', `${localX}px`);
+        glassFrame.style.setProperty('--mouse-y', `${localY}px`);
+      });
+
+      window.addEventListener('mouseleave', () => {
+        glassFrame.style.transform = 'perspective(2000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>
