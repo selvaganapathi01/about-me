@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Selvaganapathi S</title>
   
-  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -282,7 +281,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      overflow: hidden; /* Clips your image cleanly into the circle */
+      overflow: hidden;
     }
 
     .avatar-lens img {
@@ -311,7 +310,7 @@
     /* Grid & Project Glass Cards */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       margin-bottom: 5rem;
       position: relative;
@@ -326,6 +325,8 @@
       transition: all 0.5s var(--apple-ease);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card::before {
@@ -441,21 +442,6 @@
       z-index: 5;
     }
 
-    .social-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .social-links a {
-      color: var(--text-sub);
-      font-size: 1.2rem;
-      transition: color 0.3s var(--apple-ease);
-    }
-
-    .social-links a:hover {
-      color: var(--text-main);
-    }
-
     /* Ultra Responsive Adaptations */
     @media (max-width: 968px) {
       .hero-section {
@@ -503,16 +489,13 @@
 </head>
 <body>
 
-  <!-- Ambient Light Layers -->
   <div class="ambient-blur">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
   </div>
 
-  <!-- Main Glass Container Layer -->
   <div class="glass-master">
     
-    <!-- Header Controls -->
     <nav class="nav-glass">
       <div class="logo">✦ selva.</div>
       <div class="nav-links">
@@ -522,7 +505,6 @@
       </div>
     </nav>
 
-    <!-- Interactive Workspace Presentation Grid -->
     <div class="hero-section">
       <div class="hero-text">
         <div class="greeting">✦ Computer Science Professional</div>
@@ -531,25 +513,21 @@
           <i class="fa-solid fa-code"></i> MCA Graduate & Aspiring Developer
         </div>
         <p class="bio">
-          Good understanding of computer science fundamentals with hands-on experience in academic projects. Interested in
-both software development and HR roles, with strong problem-solving, communication, and learning skills.
-
+          Good understanding of computer science fundamentals with hands-on experience in academic projects. Interested in software development and HR roles, with strong problem-solving, communication, and learning skills.
         </p>
         <div class="cta-group">
           <a href="mailto:selvasubramanian293@gmail.com" class="btn btn-primary">Let's Connect <i class="fas fa-envelope" style="font-size: 0.8rem;"></i></a>
-          <a href="Selvaganapathi S.pdf" target="_blank" download class="btn btn-secondary"><i class="fas fa-download"></i> Download Resume</a>
+          <a href="resume.pdf" target="_blank" download class="btn btn-secondary"><i class="fas fa-download"></i> Download Resume</a>
         </div>
       </div>
       
       <div class="hero-image">
         <div class="avatar-lens">
-          <!-- Profile image replacing placeholder astronaut icon -->
           <img src="https://media.licdn.com/dms/image/v2/D5603AQFrquKsyjxRHg/profile-displayphoto-scale_400_400/B56ZiUSy7QHQAg-/0/1754834614280?e=1781740800&v=beta&t=5U6G4fxwF_SNgOaOj0GCio0IJWul4_LAckOz_rOBlOs" alt="Selvaganapathi S">
         </div>
       </div>
     </div>
 
-    <!-- Academic History Matrix -->
     <div style="margin-bottom: 5rem;">
       <h2 class="section-title">
         <i class="fa-solid fa-graduation-cap"></i> Educational Matrix
@@ -557,28 +535,24 @@ both software development and HR roles, with strong problem-solving, communicati
       <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.05); border-radius: 1.5rem; padding: 1.5rem 2rem;">
         <div class="edu-row">
           <div>
-            <div class="edu-inst">Rajiv Gandhi College of Engineering and Technology(2025-2026)</div>
+            <div class="edu-inst">Rajiv Gandhi College of Engineering and Technology (2025-2026)</div>
             <div class="edu-deg">Master of Computer Applications (M.C.A) · Puducherry</div>
           </div>
-          <div class="edu-grade">current sem*CGPA: 8.71</div>
+          <div class="edu-grade">CGPA: 8.71</div>
         </div>
-        
       </div>
     </div>
 
-    <!-- Applied Deployment Architecture Grid -->
     <div>
       <h2 class="section-title">
         <i class="fa-regular fa-folder-open"></i> Applied Development Systems
       </h2>
       <div class="projects-grid">
-  <div class="project-card">
-    <div class="project-icon"><i class="fas fa-seedling"></i></div>
-    <h3>Machine Learning Based Decision Support System for Precision Agriculture</h3>
-    <p>Agriculture platform using ML to analyze soil and environmental data (N, P, K, pH) for smart crop recommendations. Includes localized Indian region mapping, real-time AQI updates, admin/user dashboards, government scheme tracking, and interactive learning resources.</p>
-  </div>
-</div>
-      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-seedling"></i></div>
+          <h3>Machine Learning Based Decision Support System for Precision Agriculture</h3>
+          <p>Agriculture platform using ML to analyze soil and environmental data (N, P, K, pH) for smart crop recommendations. Includes localized Indian region mapping, real-time AQI updates, admin/user dashboards, government scheme tracking, and interactive learning resources.</p>
+        </div>
         <div class="project-card">
           <div class="project-icon"><i class="fas fa-search-location"></i></div>
           <h3>Lost & Found Information System</h3>
@@ -592,10 +566,9 @@ both software development and HR roles, with strong problem-solving, communicati
       </div>
     </div>
 
-    <!-- Core Tool Stack Framework -->
     <div>
       <h2 class="section-title">
-        <i class="fa-solid fa-layer-group"></i> Capability Parameters (on progress)
+        <i class="fa-solid fa-layer-group"></i> Capability Parameters (In Progress)
       </h2>
       <div class="skills-container">
         <span class="skill-tag">Python (Core)</span>
@@ -609,41 +582,26 @@ both software development and HR roles, with strong problem-solving, communicati
       </div>
     </div>
 
-    <!-- Master Layout Footer -->
     <div class="footer-glass">
       <span>© 2026 Selvaganapathi S.</span>
       <span class="fas fa-location-dot"> Puducherry, India</span>
     </div>
   </div>
 
-  <!-- Interactive Refraction Physics Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const glassFrame = document.querySelector('.glass-master');
       if (!glassFrame) return;
 
+      // Track mouse globally inside the interactive pane safely
       window.addEventListener('mousemove', (e) => {
-        const { clientX, clientY } = e;
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-
-        const xPos = (clientX / width) - 0.5;
-        const yPos = (clientY / height) - 0.5;
-
-        const tiltX = (yPos * -10).toFixed(2);
-        const tiltY = (xPos * 10).toFixed(2);
-
         const frameRect = glassFrame.getBoundingClientRect();
-        const localX = clientX - frameRect.left;
-        const localY = clientY - frameRect.top;
+        
+        const localX = e.clientX - frameRect.left;
+        const localY = e.clientY - frameRect.top;
 
-        glassFrame.style.transform = `perspective(2000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-2px)`;
         glassFrame.style.setProperty('--mouse-x', `${localX}px`);
         glassFrame.style.setProperty('--mouse-y', `${localY}px`);
-      });
-
-      window.addEventListener('mouseleave', () => {
-        glassFrame.style.transform = 'perspective(2000px) rotateX(0deg) rotateY(0deg) translateY(0)';
       });
     });
   </script>
